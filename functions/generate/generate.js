@@ -13,6 +13,13 @@ function createCode() {
   return Buffer.from(hexDate, 'hex').toString('base64');
 }
 
+function triggerBuild() {
+  const parameters = qs.stringify({
+    trigger_title: 'Update redirects',
+  });
+  return axios.post(process.env.BUILD_HOOK + '?' + parameters);
+}
+
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
     return {
@@ -34,6 +41,8 @@ exports.handler = async (event, context) => {
       })
     );
 
+    await triggerBuild();
+
     return {
       statusCode: 200,
       headers: {
@@ -43,7 +52,7 @@ exports.handler = async (event, context) => {
     };
   } catch (error) {
     return {
-      status: 500,
+      statusCode: 500,
       headers: {
         'Content-Type': 'application/json',
       },
