@@ -6,7 +6,7 @@ function updateSuccessMessage(code) {
   const link = document.createElement('a');
 
   link.textContent = shortUrl;
-  link.href = shortUrl;
+  link.href = 'https://' + shortUrl;
   link.target = '_blank';
 
   successMessage.appendChild(document.createTextNode('Your short URL: '));
