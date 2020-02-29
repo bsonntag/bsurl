@@ -1,0 +1,9 @@
+@import 'normalize.css';
+
+* {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}

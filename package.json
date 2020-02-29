@@ -1,0 +1,23 @@
+{
+  "name": "url-shortener",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "parcel serve src/index.html"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "@bsonntag/eslint-config": "^0.5.0",
+    "autoprefixer": "^9.7.4",
+    "eslint": "^6.8.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
+    "parcel": "^1.12.4",
+    "prettier": "^1.19.1"
+  }
+}
