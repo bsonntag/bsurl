@@ -1,0 +1,11 @@
+{
+  "name": "generate",
+  "main": "generate.js",
+  "author": "Benjamim Sonntag <benjamimsonntag@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.2",
+    "qs": "^6.9.1"
+  }
+}

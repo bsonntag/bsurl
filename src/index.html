@@ -10,6 +10,22 @@
     <link rel="stylesheet" href="./index.css" type="text/css" />
   </head>
   <body>
+    <form
+      method="POST"
+      action="/.netlify/functions/generate"
+      name="urls"
+      data-netlify="true"
+    >
+      <label>
+        Destination URL
+        <input type="text" name="url" />
+      </label>
+      <input type="text" name="code" hidden />
+      <button type="submit">Generate</button>
+    </form>
+
+    <div id="success-message"></div>
+
     <script type="application/javascript" src="./index.js"></script>
   </body>
 </html>

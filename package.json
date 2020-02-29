@@ -6,17 +6,21 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "parcel build src/index.html",
     "start": "parcel serve src/index.html"
   },
   "dependencies": {
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
     "@bsonntag/eslint-config": "^0.5.0",
     "autoprefixer": "^9.7.4",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.8",
+    "netlify-cli": "^2.36.0",
     "parcel": "^1.12.4",
     "prettier": "^1.19.1"
   }
