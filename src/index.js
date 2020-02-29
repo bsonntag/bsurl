@@ -1,9 +1,7 @@
-import qs from 'qs';
+import axios from 'axios';
 
-const query = qs.parse(window.location.search, { ignoreQueryPrefix: true });
-
-if (query.code) {
-  const shortUrl = 'bsurl.netlify.com/' + query.code;
+function updateSuccessMessage(code) {
+  const shortUrl = 'bsurl.netlify.com/' + code;
   const successMessage = document.createElement('p');
   const link = document.createElement('a');
 
@@ -16,3 +14,21 @@ if (query.code) {
 
   document.getElementById('success-message').appendChild(successMessage);
 }
+
+function setupForm() {
+  const form = document.getElementById('urls-form');
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+
+    axios
+      .post('/.netlify/functions/generate', {
+        url: form.elements.url.value,
+      })
+      .then(response => {
+        updateSuccessMessage(response.data.code);
+      });
+  });
+}
+
+setupForm();
