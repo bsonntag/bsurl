@@ -22,7 +22,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { url } = qs.parse(event.body);
+    const { url } = JSON.parse(event.body);
     const code = createCode();
 
     await axios.post(
@@ -35,12 +35,11 @@ exports.handler = async (event, context) => {
     );
 
     return {
-      statusCode: 302,
+      statusCode: 200,
       headers: {
-        Location: '/?' + qs.stringify({ code }),
-        'Cache-Control': 'no-cache',
+        'Content-Type': 'application/json',
       },
-      body: '',
+      body: JSON.stringify({ code }),
     };
   } catch (error) {
     return {
@@ -49,11 +48,6 @@ exports.handler = async (event, context) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        rootUrl,
-        request: {
-          httpMethod: event.httpMethod,
-          body: event.body,
-        },
         error: {
           message: error.message,
         },
