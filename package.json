@@ -6,7 +6,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "parcel build src/index.html && node bin/build-redirects",
+    "build": "npm run build:site && npm run build:redirects",
+    "build:site": "parcel build src/*.html",
+    "build:redirects": "node bin/build-redirects",
     "start": "parcel serve src/index.html"
   },
   "dependencies": {
@@ -20,6 +22,7 @@
     "autoprefixer": "^9.7.4",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",
+    "jest": "^25.1.0",
     "lint-staged": "^10.0.8",
     "netlify-cli": "^2.36.0",
     "parcel": "^1.12.4",
