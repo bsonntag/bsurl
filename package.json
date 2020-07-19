@@ -27,5 +27,8 @@
     "lint-staged": "^10.2.11",
     "netlify-cli": "^2.58.0",
     "prettier": "^2.0.5"
+  },
+  "engines": {
+    "node": ">=10.17"
   }
 }
