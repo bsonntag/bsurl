@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
   const code = event.queryStringParameters.code;
   const response = await axios.get(submissionsUrl);
 
-  const submission = response.data.find(submission => {
+  const submission = response.data.find((submission) => {
     return submission.data.code === code;
   });
 

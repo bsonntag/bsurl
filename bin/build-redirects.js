@@ -11,7 +11,7 @@ const submissionsUrl =
   '/submissions?access_token=' +
   process.env.API_KEY;
 
-axios.get(submissionsUrl).then(response => {
+axios.get(submissionsUrl).then((response) => {
   const redirects = addBaseRedirect(generateRedirects(response.data));
   return writeFile('./dist/_redirects', redirects);
 });
