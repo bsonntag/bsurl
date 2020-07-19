@@ -1,6 +1,6 @@
 function generateRedirects(submissions) {
   return submissions
-    .map(submission => {
+    .map((submission) => {
       let url = submission.data.url;
       if (!url.includes('://')) {
         url = 'https://' + url;

@@ -18,14 +18,14 @@ function updateSuccessMessage(code) {
 function setupForm() {
   const form = document.getElementById('urls-form');
 
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     axios
       .post('/.netlify/functions/generate', {
         url: form.elements.url.value,
       })
-      .then(response => {
+      .then((response) => {
         updateSuccessMessage(response.data.code);
       });
   });
