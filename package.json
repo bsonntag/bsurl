@@ -17,7 +17,8 @@
     "autoprefixer": "^9.8.5",
     "axios": "^0.19.2",
     "normalize.css": "^8.0.1",
-    "parcel": "^1.12.4"
+    "parcel": "^1.12.4",
+    "qs": "^6.9.4"
   },
   "devDependencies": {
     "@bsonntag/eslint-config": "^0.7.0",
