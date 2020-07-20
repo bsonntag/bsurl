@@ -1,33 +1,51 @@
 import axios from 'axios';
 
-function updateSuccessMessage(code) {
-  const shortUrl = 'bsurl.netlify.com/' + code;
-  const successMessage = document.createElement('p');
-  const link = document.createElement('a');
+function updateSuccessMessage(originalUrl, code) {
+  const originalLink = document.createElement('a');
+  originalLink.textContent = originalUrl;
+  originalLink.href = originalUrl;
+  originalLink.target = '_blank';
+  originalLink.rel = 'noopener noreferrer';
+  originalLink.style.overflow = 'hidden';
+  originalLink.style.textOverflow = 'ellipsis';
 
-  link.textContent = shortUrl;
-  link.href = 'https://' + shortUrl;
-  link.target = '_blank';
+  const originalText = document.createElement('p');
+  originalText.textContent = 'Original URL: ';
+  originalText.appendChild(originalLink);
 
-  successMessage.appendChild(document.createTextNode('Your short URL: '));
-  successMessage.appendChild(link);
+  const shortUrl = 'bsurl.pt/' + code;
+  const shortLink = document.createElement('a');
+  shortLink.textContent = shortUrl;
+  shortLink.href = 'https://' + shortUrl;
+  shortLink.target = '_blank';
+  shortLink.rel = 'noopener noreferrer';
 
-  document.getElementById('success-message').appendChild(successMessage);
+  const shortText = document.createElement('p');
+  shortText.textContent = 'Short URL: ';
+  shortText.appendChild(shortLink);
+
+  const newResult = document.createElement('div');
+  newResult.classList.add('box');
+  newResult.classList.add('result');
+  newResult.appendChild(originalText);
+  newResult.appendChild(shortText);
+
+  const [firstResult] = document.getElementsByClassName('result');
+  document.getElementById('content').insertBefore(newResult, firstResult);
 }
 
 function setupForm() {
-  const form = document.getElementById('urls-form');
+  const form = document.getElementById('generate-url');
+  const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-
-    axios
-      .post('/.netlify/functions/generate', {
-        url: form.elements.url.value,
-      })
-      .then((response) => {
-        updateSuccessMessage(response.data.code);
-      });
+    submitButton.disabled = true;
+    const url = form.elements.url.value;
+    axios.post('/.netlify/functions/generate', { url }).then((response) => {
+      submitButton.disabled = false;
+      updateSuccessMessage(url, response.data.code);
+    });
   });
 }
 
