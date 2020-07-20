@@ -6,20 +6,25 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <title>URL Shortener</title>
+    <title>BSURL - URL Shortener</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@666&family=Raleway:wght@400;600&display=swap"
+    />
     <link rel="stylesheet" href="./index.css" type="text/css" />
   </head>
   <body>
-    <form id="urls-form" name="urls" data-netlify="true">
-      <label>
-        Destination URL
-        <input type="text" name="url" />
-      </label>
-      <input type="text" name="code" hidden />
-      <button type="submit">Generate</button>
-    </form>
-
-    <div id="success-message"></div>
+    <h1 class="logo">BSURL</h1>
+    <div id="content">
+      <form id="generate-url" class="box" name="urls" data-netlify="true">
+        <label for="url">Paste your URL here:</label>
+        <div class="field">
+          <input id="url" name="url" type="text" required />
+        </div>
+        <input type="text" name="code" hidden />
+        <button type="submit">Shorten</button>
+      </form>
+    </div>
 
     <script type="application/javascript" src="./index.js"></script>
   </body>
