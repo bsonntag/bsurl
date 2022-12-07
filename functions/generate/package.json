@@ -6,6 +6,6 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.2",
-    "qs": "^6.9.4"
+    "qs": "^6.9.7"
   }
 }
